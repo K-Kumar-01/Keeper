@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import cookie from 'js-cookie';
 
 import Loading from '../Loading/Loading';
 

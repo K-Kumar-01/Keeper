@@ -36,7 +36,7 @@ function App() {
 				<Route path="/signup">
 					<Signup />
 				</Route>
-				<NoteList />
+				<NoteList isLoggedIn={token} />
 				<Footer></Footer>
 			</BrowserRouter>
 		</AuthContext.Provider>

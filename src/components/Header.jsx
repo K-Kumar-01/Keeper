@@ -6,9 +6,7 @@ import { AuthContext } from './context/auth-context';
 function Header(props) {
 	const history = useHistory();
 	const auth = useContext(AuthContext);
-	useEffect(() => {
-		console.log(auth);
-	});
+
 	const logoutUser = () => {
 		auth.logout();
 		history.push('/login');
