@@ -55,16 +55,17 @@ const Modal = (props) => {
 				</div>
 				<div className="form-group mx-auto text-center">
 					<div>
-						{props.add && (
-							<button className={`btn btn-outline-primary `}>Add</button>
-						)}
-						{props.edit && (
-							<button className={`btn btn-outline-warning `}>Edit</button>
-						)}
-						{props.delete && (
-							<button className={`btn btn-outline-danger `}>Delete</button>
-						)}
-						<button className={`btn btn-outline-secondary  ml-3`}>Cancel</button>
+						{props.add && <button className={`btn btn-outline-primary `}>Add</button>}
+						{props.edit && <button className={`btn btn-outline-warning `}>Edit</button>}
+						{props.delete && <button className={`btn btn-outline-danger `}>Delete</button>}
+						<button
+							className={`btn btn-outline-secondary ml-3`}
+							onClick={() => {
+								props.closeModal();
+							}}
+						>
+							Cancel
+						</button>
 					</div>
 					<div></div>
 				</div>
@@ -110,16 +111,17 @@ const Modal = (props) => {
 				</div>
 				<div className="form-group mx-auto text-center">
 					<div>
-						{props.add && (
-							<button className={`btn btn-outline-primary `}>Add</button>
-						)}
-						{props.edit && (
-							<button className={`btn btn-outline-warning `}>Edit</button>
-						)}
-						{props.delete && (
-							<button className={`btn btn-outline-danger `}>Delete</button>
-						)}
-						<button className={`btn btn-outline-secondary  ml-3`}>Cancel</button>
+						{props.add && <button className={`btn btn-outline-primary `}>Add</button>}
+						{props.edit && <button className={`btn btn-outline-warning `}>Edit</button>}
+						{props.delete && <button className={`btn btn-outline-danger `}>Delete</button>}
+						<button
+							className={`btn btn-outline-secondary ml-3`}
+							onClick={() => {
+								props.closeModal();
+							}}
+						>
+							Cancel
+						</button>
 					</div>
 					<div></div>
 				</div>
@@ -128,11 +130,19 @@ const Modal = (props) => {
 	};
 
 	const showDeleteModal = () => {
+	
 		return (
 			<div className="text-center">
 				<p>Are you sure you want to delete the note named {props.not && props.note.title}</p>
 				{props.delete && <button className={`btn btn-outline-danger`}>Delete</button>}
-				<button className={`btn btn-outline-secondary ml-3`}>Cancel</button>
+				<button
+					className={`btn btn-outline-secondary ml-3`}
+					onClick={() => {
+						props.closeModal();
+					}}
+				>
+					Cancel
+				</button>
 			</div>
 		);
 	};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import Loading from '../Loading/Loading';
 
 import styles from './Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthContext } from '../context/auth-context';
 
 const Login = () => {
 	const { handleSubmit, register, errors } = useForm();
@@ -15,6 +16,8 @@ const Login = () => {
 	const [message, setMessage] = useState(false);
 	const [resperror, setResperror] = useState(false);
 	const history = useHistory();
+
+	const auth = useContext(AuthContext);
 	const onSubmit = async (values, e) => {
 		e.preventDefault();
 		// console.log(values.email);
@@ -47,7 +50,8 @@ const Login = () => {
 		if ((response.status = 200)) {
 			setSpinner(false);
 			setResperror(false);
-			cookie.set('token', response.data.token, { expiresIn: '4h' });
+			// cookie.set('token', response.data.token, { expiresIn: '4h' });
+			auth.login(response.data.token);
 			history.push('/');
 		} else {
 			setSpinner(false);

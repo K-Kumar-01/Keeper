@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { authenticate, removeCookie } from './helper/auth';
-function Header() {
-	const history = useHistory();
+import { AuthContext } from './context/auth-context';
 
-	const [auth, setAuth] = useState(authenticate());
+function Header(props) {
+	const history = useHistory();
+	const auth = useContext(AuthContext);
 	useEffect(() => {
 		console.log(auth);
 	});
 	const logoutUser = () => {
-		removeCookie();
-		setAuth(false);
+		auth.logout();
 		history.push('/login');
 	};
 	return (
@@ -19,12 +19,12 @@ function Header() {
 				Keeper App
 			</Link>
 			<span>
-				{!auth && (
+				{!props.isLoggedIn && (
 					<Link to="/login" style={{ textDecoration: 'none' }} className="header-link">
 						Login
 					</Link>
 				)}
-				{auth && (
+				{props.isLoggedIn && (
 					<button className="btn btn-outline-dark" onClick={logoutUser}>
 						Logout
 					</button>
