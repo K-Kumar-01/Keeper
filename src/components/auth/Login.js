@@ -72,6 +72,7 @@ const Login = () => {
 								message: 'invalid email address',
 							},
 						})}
+						placeholder="example@gmail.com"
 						className={`form-control`}
 						style={errors.email && { border: '1px solid red' }}
 					/>
@@ -88,6 +89,7 @@ const Login = () => {
 							required: true,
 							minLength: 5,
 						})}
+						placeholder="******"
 						className={`form-control`}
 						style={errors.password && { border: '1px solid red' }}
 					/>

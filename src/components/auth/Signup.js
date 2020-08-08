@@ -89,7 +89,7 @@ const Signup = () => {
 							required: true,
 							minLength: 5,
 						})}
-						placeholder="******"
+						placeholder="Must be at least 5 charcters long"
 						className={`form-control`}
 						style={errors.password && { border: '1px solid red' }}
 					/>

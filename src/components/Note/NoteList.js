@@ -18,7 +18,7 @@ const NoteList = (props) => {
 			showAllNotes();
 		} else {
 		}
-	}, []);
+	}, [props.isLoggedIn]);
 
 	const closeModal = () => {
 		setAddModa(false);
@@ -45,7 +45,7 @@ const NoteList = (props) => {
 			return false;
 		}
 		if ((response.status = 200)) {
-			console.log(response);
+			// console.log(response);
 			setSpinner(false);
 			setResperror(false);
 			// cookie.set('token', response.data.token, { expiresIn: '4h' });
